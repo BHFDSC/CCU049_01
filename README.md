@@ -1,11 +1,13 @@
 # Healthcare Utilisation of 282,080 Individuals with Long COVID over Two Years: A Multiple Matched Control Cohort Analysis
 
+**Yi Mu, Ashkan Dashtban, Mehrdad A. Mizani, Chris Tomlinson, Mohamed Mohamed, Mark Ashworth, Mamas Mamas, Rouven Priedon, Steffen Petersen, Evan Kontopantelis, Christina Pagel, Mevhibe Hocaoğlu, Kamlesh Khunti, Richard Williams, Johan Thygesen, Paula Lorgelly, Manuel Gomes, Melissa Heightman, Amitava Banerjee, on behalf of the CVD-COVID-UK/COVID-IMPACT Consortium**
+
 ## Project description
 
 In the UK alone, Long Covid is affecting over 2 million individuals, yet health system burden is poorly studied and characterised. Understanding the scale of healthcare utilisation will inform clinical, service and policy planning for current and future care of individuals with Long Covid. 
 
 ## How to cite this work
-> Citation details to follow
+> Preprint available here: https://dx.doi.org/10.2139/ssrn.4598962
 
 ## Contents
 
