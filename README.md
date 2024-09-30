@@ -1,6 +1,6 @@
-# Healthcare Utilisation of 282,080 Individuals with Long COVID over Two Years: A Multiple Matched Control Cohort Analysis
+# Healthcare utilisation of 282,080 individuals with long COVID over two years: a multiple matched control, longitudinal cohort analysis
 
-**Yi Mu, Ashkan Dashtban, Mehrdad A. Mizani, Chris Tomlinson, Mohamed Mohamed, Mark Ashworth, Mamas Mamas, Rouven Priedon, Steffen Petersen, Evan Kontopantelis, Christina Pagel, Mevhibe Hocaoğlu, Kamlesh Khunti, Richard Williams, Johan Thygesen, Paula Lorgelly, Manuel Gomes, Melissa Heightman, Amitava Banerjee, on behalf of the CVD-COVID-UK/COVID-IMPACT Consortium**
+**Yi Mu, Ashkan Dashtban, Mehrdad A. Mizani, Chris Tomlinson, Mohamed Mohamed, Mark Ashworth, Mamas Mamas, Rouven Priedon, Steffen Petersen, Evan Kontopantelis, Kim Horstmanshof, Christina Pagel, Mevhibe Hocaoğlu, Kamlesh Khunti, Richard Williams, Johan Thygesen, Paula Lorgelly, Manuel Gomes, Melissa Heightman, Amitava Banerjee, on behalf of the CVD-COVID-UK/COVID-IMPACT Consortium**
 
 ## Project description
 
