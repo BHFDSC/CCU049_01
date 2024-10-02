@@ -19,8 +19,6 @@ library(odbc)
 ## Home Folder/CCU049/matched_use_data_v2
 library(DBI)
 
-setwd("D:/PhotonUser/My Files/Home Folder/ccu049")
-
 
 ## To load main tables
 # Each of the following tables contains both the study group (long COVID) and the matched control group
@@ -29,80 +27,12 @@ load("D:/PhotonUser/My Files/Home Folder/ccu049/matched_use_data_v2/nocovidc_bot
 load("D:/PhotonUser/My Files/Home Folder/ccu049/matched_use_data_v2/nocovidh_both.rdata")
 load("D:/PhotonUser/My Files/Home Folder/ccu049/matched_use_data_v2/onlycovid_both.rdata")
 
-
+## Analysis is conducted for each data frame separately. Each data frame below contains one control group and the treament group.
 # Rename the table used for analysis as 'test' and with an age filter (age>=18)
 test <- longcoh_all %>% filter(age>=18)
 test <- nocovidh_all %>% filter(age>=18)
 test <- onlycovid_all %>% filter(age>=18)
 test <- nocovidc_all %>% filter(age>=18)
-
-
-##### For Reviewer's comments regarding overlap between control group #####
-#nocovidc_control <- subset(control, select = c(id))
-
-#longcoh_nocovidh <- rbind(longcoh_control, nocovidh_control)
-#longcoh_nocovidc <- rbind(longcoh_control, nocovidc_control)
-#longcoh_onlycovid <- rbind(longcoh_control, onlycovid_control)
-#onlycovid_nocovidh <- rbind(onlycovid_control, nocovidh_control)
-#onlycovid_nocovidc <- rbind(onlycovid_control, nocovidc_control)
-#nocovidh_nocovidc <- rbind(nocovidh_control, nocovidc_control)
-
-#duplicate_count <- nocovidh_nocovidc %>%
-#  group_by(id) %>%
-#  filter(n()>1) %>%
-#  ungroup()
-
-#print(duplicate_count)
-
-
-##### For Reviewer's comments regarding sample balance #####
-#load("D:/PhotonUser/My Files/Home Folder/ccu049/matched_base_data/nocovidc_co_matched.rdata")
-#load("D:/PhotonUser/My Files/Home Folder/ccu049/cohort_base_data/longc_co_base.rdata")
-
-#nocovidh_co_
-#nocovidh_co_matched <- left_join(nocovidh_co_matched1, nocovidh_co_matched2, by = c("case_id","control_id","n"))
-
-
-#nocovidc_co_matched <- left_join(nocovidc_co_matched1, nocovidc_co_matched2, by = c("case_id","control_id","n"))
-#nocovidc_co_matched <- left_join(nocovidc_co_matched, nocovidc_co_matched4, by = c("case_id","control_id","n"))
-#longc_co <- dbGetQuery(con,'SELECT id,age,agecat,sex,ethnicity,white,imd,region,cvd,ht,dm,copd,asthma,
-#                       depression,cancer,ckd,obese,dementia from dars_nic_391419_j3w9t_collab.ccu049_longc')
-#nocovidc_co_matched <- nocovidc_co_matched %>% 
-#  mutate(cvd = as.integer(ami==1|hf==1|af==1|stroke==1|cdy==1|pe==1|dvt==1|pad==1))
-#cvd <- nocovidc_co_matched %>% filter(cvd==1)
-#nocovidc_co <- subset(nocovidc_co_matched, select=-c(case_id,n,region42,smk,ami,hf,af,stroke,cdy,pe,dvt,pad))
-#nocovidc_co <- nocovidc_co %>%
-#  mutate(white = ifelse(ethnicity =="White",1,0))
-
-#longc_co <- longc_co %>% select(id,age,agecat,sex,ethnicity,white,imd,region,cvd,ht,dm,copd,asthma,
-#                                depression,cancer,ckd,obese,dementia)
-#nocovidc_co <- nocovidc_co %>%
-#  rename(
-#    id=control_id
-#  )
-#nocovidc_co <- nocovidc_co %>% select (id,age,agecat,sex,ethnicity,white,imd,region,cvd,ht,dm,copd,asthma,
-#                                       depression,cancer,ckd,obese,dementia)
-#longc_co$treat <-1
-#nocovidc_co$treat <- 0
-#nocovidc_case_control_base <- rbind(longc_co,nocovidc_co)
-
-#nocovidc_case_control_base[is.na(nocovidc_case_control_base)] = 0
-
-#nocovidc_case_control_base$imd <- factor(nocovidc_case_control_base$imd)
-#nocovidc_case_control_base$region <- factor(nocovidc_case_control_base$region)
-
-
-#model <- glm(treat ~ age+sex+white+imd+region+cvd+ht+dm+copd+asthma+depression+cancer+ckd+obese+dementia, data=nocovidc_case_control_base, family=binomial())
-#model <- glm(treat ~ age+sex+white+cvd+ht+dm+copd+asthma+depression+cancer+ckd+obese+dementia, data=nocovidc_case_control_base, family=binomial())
-
-#model <- lm(treat ~ age+sex+white+imd+region+cvd+ht+dm+copd+asthma+depression+cancer+ckd+obese+dementia, data=nocovidc_case_control_base)
-#model <- lm(treat ~ age+sex+white+imd+region, data=nocovidc_case_control_base)
-#model <- lm(dementia ~ treat,data=nocovidc_case_control_base)
-
-#summary(model)
-
-#save(longc_co, file = "D:/PhotonUser/My Files/Home Folder/ccu049/matched_base_data/longc_co.rdata")
-#save(nocovidc_co, file = "D:/PhotonUser/My Files/Home Folder/ccu049/matched_base_data/nocovidc_co_new.rdata")
 
 # First, replace NA by 0
 test[is.na(test)] = 0
@@ -112,10 +42,8 @@ test$followup_mon <- test$followup_day/30.44
 test$followup_yr <- test$followup_day/365.25
 
 
-
-# Make sure no one has negative follow up (this might happen due to error in the data)
+# Ensure no one has negative follow-up (this could happen due to error in the data)
 # Check number of people who had a negative (<0) followup period
-# After checking, found a few patients died before their first COVID record in COVID only group, revised their follow-up period to 0
 sum(test$followup_mon<0)
 test$followup_mon[test$followup_mon<0]=0
 test$followup_yr[test$followup_yr<0]=0
@@ -261,33 +189,12 @@ test <- test %>%
 
 
 
-
-
-
-
 #### Calculate the MEAN and SD for health service use and cost per month and t-test ####
 
 # First, need to remove those whose follow-up period are non-positive.
 test <- test[test$followup_mon > 0, ] 
 
 # Calculate the mean and sd for each category per month
-
-
-
-
-#hist(treat$gp_yr, breaks=500, main = "Histogram of Values", xlab = "Values", col = "blue", border = "black")
-
-#test %>%
-#  filter(treat == 1) %>%
-#  ggplot(aes(x = apc_dur_yr)) +
-#  geom_histogram(bins = 500, fill = "blue", color = "black") +
-#  ggtitle("Histogram of Column A where Column B == 1") +
-#  xlab("Column A") +
-#  ylab("Frequency")
-
-
-
-
 
 test %>%
   group_by(treat) %>%
