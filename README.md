@@ -7,7 +7,7 @@
 In the UK alone, Long Covid is affecting over 2 million individuals, yet health system burden is poorly studied and characterised. Understanding the scale of healthcare utilisation will inform clinical, service and policy planning for current and future care of individuals with Long Covid. 
 
 ## How to cite this work
-> Preprint available here: https://dx.doi.org/10.2139/ssrn.4598962
+Mu Y, Dashtban A, Mizani MA, et al. Healthcare utilisation of 282,080 individuals with long COVID over two years: a multiple matched control, longitudinal cohort analysis. Journal of the Royal Society of Medicine. 2024;0(0). doi: https://doi.org/10.1177/01410768241288345
 
 ## Contents
 
